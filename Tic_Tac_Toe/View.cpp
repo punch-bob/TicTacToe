@@ -14,7 +14,7 @@ void View::ViewStartScreen()
 	std::string str5 = "   | | | | (__              | | (_| | (__              | | (_) |  __/\n";
 	std::string str6 = "   \\_/ |_|\\___|             \\_/\\__,_|\\___|             \\_/\\___/ \\___| \n";
 	std::cout << str1 << str2 << str3 << str4 << str5 << str6;
-	Sleep(6000);
+	Sleep(2000);
 }
 
 void View::ViewRules()
@@ -66,7 +66,7 @@ void View::ViewBadCoordsMessage()
 	std::cout << "Incorrect coordinates, try to enter again!" << std::endl;
 }
 
-void View::RefreshScreen(std::vector<short int> used_coords)
+void View::Update(std::vector<short int> used_coords)
 {
 	View::ClearScreen();
 	for (int i = 0; i < 9; ++i)
@@ -91,7 +91,6 @@ void View::RefreshScreen(std::vector<short int> used_coords)
 			{
 				std::cout << partition << std::endl;
 			}
-
 		}
 	}
 }
@@ -112,5 +111,5 @@ void View::ViewEndMessage()
 	std::string str7 = "	                                              | |             __/ |         __/ |\n";
 	std::string str8 = "	                                              |_|            |___/         |___/\n";
 	std::cout << str1 << str2 << str3 << str4 << str5 << str6 << str7 << str8;
-	Sleep(6000);
+	Sleep(3000);
 }

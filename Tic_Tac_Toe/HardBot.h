@@ -11,6 +11,4 @@ public:
 	int GetCoords(std::vector<short int> board);
 private:
 	int MiniMax(std::vector<short int> board, int side);
-
-	int GetCoords() { return 1; };
 };

@@ -6,7 +6,7 @@ PlayerType User::GetType()
 	return PlayerType::User;
 }
 
-int User::GetCoords()
+int User::GetCoords(std::vector<short int> used_coords)
 {
 	std::string coord;
 	std::cin >> coord;

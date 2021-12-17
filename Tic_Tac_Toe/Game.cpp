@@ -3,6 +3,10 @@
 
 Game::Game()
 {
+	mode = 2;
+	difficult = 2;
+	player_1 = nullptr;
+	player_2 = nullptr;
 	for (int i = 0; i < 9; ++i)
 	{
 		used_coord.push_back(0);
@@ -11,28 +15,28 @@ Game::Game()
 
 void Game::CreatePlayers(int mode, int dif)
 {
-	player_1 = new User;
+	player_1 = std::shared_ptr<Player>(new User);
 	if (mode == 2)
 	{
 		if (dif == 1)
 		{
-			player_2 = new EasyBot;
+			player_2 = std::shared_ptr<Player>(new EasyBot());
 		}
 		else
 		{
-			player_2 = new HardBot;
+			player_2 = std::shared_ptr<Player>(new HardBot);
 		}
 	}
 	else
 	{
-		player_2 = new User;
+		player_2 = std::shared_ptr<Player>(new User);
 	}
 }
 
 bool Game::Step(int step)
 {
 	int sign = 0;
-	Player* player;
+	std::shared_ptr<Player> player;
 	if (step == 1)
 	{
 		player = player_1;
@@ -66,7 +70,7 @@ void Game::Play()
 
 	int side = controller.SelectSide();
 
-	Game::CreatePlayers(mode, difficult);
+	CreatePlayers(mode, difficult);
 	int step = 0;
 
 	if (side == 1)

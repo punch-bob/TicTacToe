@@ -7,9 +7,9 @@ public:
 
 	PlayerType GetType();
 
-	int GetCoords();
-private:
-	int GetCoords(std::vector<short int> board) { return 1; };
+	int GetCoords(std::vector<short int> board);
 
 	virtual ~User() {}
+private:
+	
 };

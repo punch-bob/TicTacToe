@@ -51,38 +51,25 @@ int Controller::SelectSide()
 	return numb;
 }
 
-short int Controller::GetCoords(Player* player, std::vector<short int> used_coords)
+short int Controller::GetCoords(std::shared_ptr<Player> player, std::vector<short int> used_coords)
 {
 	PlayerType player_type = player->GetType();
 	short int coords;
-	if (player_type == PlayerType::HardBot)
-	{
-		coords = player->GetCoords(used_coords);
-		return coords;
-	}
-
-	coords = player->GetCoords();
+	coords = player->GetCoords(used_coords);
 
 	while (used_coords[coords] != 0 || (coords < 0 || coords > 8))
 	{
-		if (player_type == PlayerType::User)
-		{
 			screen.ViewBadCoordsMessage();
 			Sleep(1000);
-			screen.RefreshScreen(used_coords);
-			coords = player->GetCoords();
-		}
-		else if (player_type == PlayerType::EasyBot)
-		{
-			coords = player->GetCoords();
-		}
+			Notify(used_coords);
+			coords = player->GetCoords(used_coords);
 	}
 	return coords;
 }
 
 void Controller::UpdateBoard(std::vector<short int> used_coords)
 {
-	screen.RefreshScreen(used_coords);
+	Notify(used_coords);
 }
 
 GameResult Controller::CheckWin(std::vector<short int> used_coords)

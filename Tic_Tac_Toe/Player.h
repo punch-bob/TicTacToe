@@ -17,7 +17,5 @@ public:
 
 	virtual PlayerType GetType() = 0;
 
-	virtual int GetCoords() = 0;
-
 	virtual int GetCoords(std::vector<short int> board) = 0;
 };

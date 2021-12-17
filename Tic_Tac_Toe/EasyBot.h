@@ -8,9 +8,7 @@ public:
 
 	PlayerType GetType();
 
-	int GetCoords();
-private:
-	virtual ~EasyBot() {};
+	int GetCoords(std::vector<short int> board);
 
-	int GetCoords(std::vector<short int> board) { return 1; };
+	virtual ~EasyBot() {};
 };

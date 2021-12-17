@@ -2,8 +2,9 @@
 #include <Windows.h>
 #include <iostream>
 #include <vector>
+#include "Observer.h"
 
-class View
+class View : public Observer
 {
 public:
 	void ClearScreen();
@@ -22,11 +23,11 @@ public:
 
 	void ViewBadCoordsMessage();
 
-	void RefreshScreen(std::vector<short int> used_coords);
-
 	void ViewResultMessage(std::string side);
 
 	void ViewEndMessage();
+
+	void Update(std::vector<short int> used_coords);
 private:
 	std::string partition = "+-+-+-+";
 };
